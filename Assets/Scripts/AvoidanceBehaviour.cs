@@ -22,6 +22,7 @@ public class AvoidanceBehaviour : FlockBehaviour
             {
                 numAvoid++;
                 avoidanceMove += agent.transform.position - item.position;
+                avoidanceMove.y = 0;
             }
             
         }
