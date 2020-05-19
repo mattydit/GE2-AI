@@ -55,9 +55,8 @@ public class Flock : MonoBehaviour
         {
             List<Transform> context = GetNearbyObjects(agent); 
             //testing
-            agent.GetComponentInChildren<MeshRenderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+            //agent.GetComponentInChildren<MeshRenderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
 
-            /*
             Vector3 move = behaviour.CalculateMove(agent, context, this);
             move *= driveFactor;
 
@@ -67,7 +66,7 @@ public class Flock : MonoBehaviour
             }
 
             agent.Move(move);
-            */
+            
         }
     }
 
