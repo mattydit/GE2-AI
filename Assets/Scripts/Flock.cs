@@ -16,8 +16,8 @@ public class Flock : MonoBehaviour
     public float driveFactor = 10f;
     [Range(1f, 100f)]
     public float maxSpeed = 5f;
-    [Range(1f, 10f)]
-    public float neighbourRadius = 1.5f;
+    //[Range(1f, 10f)]
+    public float neighbourRadius = 0.15f;
     [Range(0f, 1f)]
     public float avoidanceRadiusMult = 0.5f;
 
@@ -51,7 +51,40 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (FlockAgent agent in agents)
+        {
+            List<Transform> context = GetNearbyObjects(agent); 
+            //testing
+            agent.GetComponentInChildren<MeshRenderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+
+            /*
+            Vector3 move = behaviour.CalculateMove(agent, context, this);
+            move *= driveFactor;
+
+            if (move.sqrMagnitude > sqMaxSpeed)
+            {
+                move = move.normalized * maxSpeed;
+            }
+
+            agent.Move(move);
+            */
+        }
+    }
+
+    List<Transform> GetNearbyObjects(FlockAgent agent)
+    {
+        List<Transform> context = new List<Transform>();
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
+
+        foreach (Collider c in contextColliders)
+        {
+            if (c != agent.GetAgentCollider)
+            {
+                context.Add(c.transform);
+            }
+        }
+
+        return context;
     }
 
     public float GetSqAvoidanceRadius
