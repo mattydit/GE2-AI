@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: ObstacleAvoidance
   m_EditorClassIdentifier: Assembly-CSharp::FilteredAvoidancer
-  filter: {fileID: 0}
+  filter: {fileID: 11400000, guid: a94d8f1bdc020ed4b886201f8cc9b671, type: 2}
