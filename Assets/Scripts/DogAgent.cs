@@ -27,7 +27,7 @@ public class DogAgent : MonoBehaviour
     void Update()
     {
 
-        force = Calculate();
+        //force = Calculate();
         Vector3 newAcceleration = force / mass;
         acceleration = Vector3.Lerp(acceleration, newAcceleration, Time.deltaTime);
         velocity += acceleration * Time.deltaTime;
@@ -53,6 +53,7 @@ public class DogAgent : MonoBehaviour
         return desired - velocity;
     }
 
+    /*
     Vector3 Calculate()
     {
         force += b.Calculate() * b.weight;
@@ -65,5 +66,6 @@ public class DogAgent : MonoBehaviour
 
         return force;
     }
+    */
 }
 
